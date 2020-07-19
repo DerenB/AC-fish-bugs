@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a1a21a7fe5.js" crossorigin="anonymous"></script>
+    <title>ACNH: Fish, Bugs, & Creatures</title>
+
+    <style>
+        body, html {
+            background-color: #82ff96;
+            height: 100%;
+            background-size: 100%;
+            background-image: url(images/banners/tomnook.jpg);
+            background-repeat: repeat-y;
+            background-attachment: fixed;
+        }
+
+        /* ---------- NAVBAR & HEADER STYLES ---------- */
+        #navBar {
+            background-color: #82ff96;
+            background: url(images/banners/grass.png) center center / cover no-repeat;
+        }
+
+        #header {
+            background-color: #ffe77d;
+        }
+        .headerDate {
+            margin-top: 20px;
+            margin-bottom: -5px;
+            font-size: 0.9em;
+        }
+        .btn {
+            width: 150px;
+            border: solid black 1px;
+        }
+        /* ---------- NAVBAR & HEADER STYLES ---------- */
+
+        /* ---------- TABLE STYLES ---------- */
+        .tableStyle {
+            background-color: #ffe77d;
+            border-collapse: collapse;
+            border: solid black 3px;
+        }
+        .tableHeader {
+            text-align: center;
+            font-size: 1.3em;
+        }
+        .subHeader {
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .cellLeft {
+            width: 43%;
+            padding-left: 5px;
+        }
+        .cellCenter {
+            width: 43%;
+            text-align: left;
+        }
+        .cellRight {
+            width: 14%;
+            padding-right: 5px;
+        }
+        /* ---------- TABLE STYLES ---------- */
+
+    </style>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav id="navBar" class="navbar navbar-dark">
+        <div class="container">
+            <a href="#" title="portfolioPage" class="navbar-brand">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                </svg>
+            </i>Portfolio Home</a>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <section id="header" class="jumbotron text-center">
+        <h1 class="display-3">Animal Crossing: New Horizons</h1>
+        <p class="lead">
+            A list of all the Fish, Bugs, & Sea Creatures available to be caught at the time this page was loaded. 
+        </p>
+        <p>Additional Information:</p>
+        <a href="https://animalcrossing.fandom.com/wiki/Fish_(New_Horizons)" target="_blank" title="Fandom Fish" class="btn btn-primary">Fish</a>
+        <a href="https://animalcrossing.fandom.com/wiki/Bugs_(New_Horizons)" target="_blank" title="Fandom Bugs" class="btn btn-primary">Bugs</a>
+        <a href="https://animalcrossing.fandom.com/wiki/Deep-sea_creatures_(New_Horizons)" target="_blank" title="Fandom Creatures" class="btn btn-primary">Sea Creatures</a>
+        <p class="headerDate">Page Loaded at:</p>
+        <p id="dateTime" class="headerDate"></p>
+    </section>
+
+    <!-- INFORMATION TABLES -->
+    <section id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** New Fish ********** -->
+                        <table id="newFish" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">Fish Arriving This Month</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Location</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** New Fish ********** -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** New Bugs ********** -->
+                        <table id="newBugs" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">Bugs Arriving This Month</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Location</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** New Bugs ********** -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** New Creatures ********** -->
+                        <table id="newCreatures" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">Sea Creatures Arriving This Month</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Size</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** New Creatures ********** -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** Old Fish ********** -->
+                        <table id="oldFish" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">Fish Leaving This Month</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Location</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** Old Fish ********** -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** Old Bugs ********** -->
+                        <table id="oldBugs" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">Bugs Leaving This Month</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Location</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** Old Bugs ********** -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** Old Creatures ********** -->
+                        <table id="oldCreatures" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">Sea Creatures Leaving This Month</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Size</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** Old Creatures ********** -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** Available Fish ********** -->
+                        <table id="tableFish" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">All Available Fish</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Location</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** Available Fish ********** -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** Available Bugs ********** -->
+                        <table id="tableBugs" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">All Available Bugs</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Location</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** Available Bugs ********** -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 mb-3">
+                    <div class="card">
+                        <!-- ********** Available Creatures ********** -->
+                        <table id="tableCreatures" class="tableStyle">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="tableHeader">All Available Creatures</th>
+                                </tr>      
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cellLeft subHeader">Name</td>
+                                    <td class="cellCenter subHeader">Size</td>
+                                    <td class="cellRight subHeader">Pic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********** Available Creatures ********** -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        /* -------------------- Date Values -------------------- */
+        //Gets the Current Date and Time
+        var todayDate = new Date();
+
+        //Gets the Date Values
+        var dd = ("0" + todayDate.getDate()).slice(-2);
+        var mm = ("0" + (todayDate.getMonth() + 1)).slice(-2);
+        var yyyy = todayDate.getFullYear();
+        //document.getElementById('currentDate').innerHTML = mm + " / " + dd + " / " + yyyy;
+
+        //Gets the Time Values
+        var hh = ("0" + todayDate.getHours()).slice(-2);
+        var min = ("0" + todayDate.getMinutes()).slice(-2);
+        var ss = ("0" + todayDate.getSeconds()).slice(-2);
+        //document.getElementById('currentTime').innerHTML = hh + " : " + min + " : " + ss;
+        document.getElementById('dateTime').innerHTML = mm + " / " + dd + " / " + yyyy + ", " + hh + " : " + min + " : " + ss;
+
+        //Sets the Current Data
+        var currentMonth = ("0" + (todayDate.getMonth() + 1)).slice(-2);
+        var currentHour = (("0" + todayDate.getHours()).slice(-2)) * 100;
+
+        /* -------------------- Date Values -------------------- */
+
+        /* -------------------- DATA TABLES-------------------- */
+        var fishNorth = [
+            ["Name","Location","Price","Month Start","Month End","Time Start","Time End"],
+            ["Anchovy","Sea",200,1,12,400,2100,"images/Anchovy.png"],
+            ["Angelfish","River",3000,5,10,1600,900],
+            ["Arapaima","River",10000,6,9,1600,900],
+            ["Arowana","River",10000,6,9,1600,900],
+            ["Barred Knifejaw","Sea",5000,3,11,0,2359],
+            ["Barreleye","Sea",15000,1,12,2100,400],
+            ["Betta","River",2500,5,10,900,1600],
+            ["Bitterling","River",900,11,3,0,2359],
+            ["Black Bass","River",400,1,12,0,2359],
+            ["Blowfish","Sea",5000,11,2,2100,400],
+            ["Blue Marlin","Pier",10000,7,9,0,2359],
+            ["Blue Marlin","Pier",10000,11,4,0,2359],
+            ["Bluegill","River",180,1,12,900,1600],
+            ["Butterfly Fish","Sea",1000,4,9,0,2359],
+            ["Carp","Pond",300,1,12,0,2359],
+            ["Catfish","Pond",800,5,10,1600,900],
+            ["Char","River (Clifftop) Pond",3800,3,6,1600,900],
+            ["Char","River (Clifftop) Pond",3800,9,11,1600,900],
+            ["Cherry Salmon","River (Clifftop)",1000,3,6,1600,900],
+            ["Cherry Salmon","River (Clifftop)",1000,9,11,1600,900],
+            ["Clown Fish","Sea",650,4,9,0,2359],
+            ["Coelacanth","Sea",15000,1,12,0,2359],
+            ["Crawfish","Pond",200,4,9,0,2359],
+            ["Crucian Carp","River",160,1,12,0,2359],
+            ["Dab","Sea",300,10,4,0,2359],
+            ["Dace","River",240,1,12,1600,900],
+            ["Dorado","River",15000,6,9,400,2100],
+            ["Football Fish","Sea",2500,11,3,1600,900],
+            ["Freshwater Goby","River",400,1,12,1600,900],
+            ["Frog","Pond",120,5,8,0,2359],
+            ["Gar","Pond",6000,6,9,1600,900],
+            ["Giant Snakehead","Pond",5500,6,8,900,1600],
+            ["Giant Trevally","Pier",4500,5,10,0,2359],
+            ["Golden Trout","River (Clifftop)",15000,3,5,1600,900],
+            ["Golden Trout","River (Clifftop)",15000,9,11,1600,900],
+            ["Goldfish","Pond",1300,1,12,0,2359],
+            ["Great White Shark","Sea",15000,6,9,1600,900],
+            ["Guppy","River",1300,4,11,900,1600],
+            ["Hammerhead Shark","Sea",8000,6,9,1600,900],
+            ["Horse Mackerel","Sea",150,1,12,0,2359],
+            ["Killifish","Pond",300,4,8,0,2359],
+            ["King Salmon","River (Mouth)",1800,9,9,0,2359],
+            ["Koi","Pond",4000,1,12,1600,900],
+            ["Loach","River",400,3,5,0,2359],
+            ["Mahi-Mahi","Pier",6000,5,10,0,2359],
+            ["Mitten Crab","River",2000,9,11,1600,900],
+            ["Moray Eel","Sea",2000,8,10,0,2359],
+            ["Napoleonfish","Sea",10000,7,8,400,2100],
+            ["Neon Tetra","River",500,4,11,900,1600],
+            ["Nibble Fish","River",1500,5,9,900,1600],
+            ["Oarfish","Sea",9000,12,5,0,2359],
+            ["Ocean Sunfish","Sea",4000,7,9,400,2100],
+            ["Olive Flounder","Sea",800,1,12,0,2359],
+            ["Pale Chub","River",200,1,12,900,1600],
+            ["Pike","River",1800,9,12,0,2359],
+            ["Piranha","River, Morning",2500,6,9,900,1600],
+            ["Piranha","River, Night",2500,6,9,2100,400],
+            ["Pond Smelt","River",500,12,2,0,2359],
+            ["Pop-eyed Goldfish","Pond",1300,1,12,900,1600],
+            ["Puffer Fish","Sea",250,7,9,0,2359],
+            ["Rainbowfish","River",800,5,10,900,1600],
+            ["Ranchu Goldfish","Pond",4500,1,12,900,1600],
+            ["Ray","Sea",3000,8,11,400,2100],
+            ["Red Snapper","Sea",3000,1,12,0,2359],
+            ["Ribbon Eel","Sea",600,6,10,0,2359],
+            ["Saddled Bichir","River",4000,6,9,2100,400],
+            ["Salmon","River (Mouth)",700,9,9,0,2359],
+            ["Saw Shark","Sea",12000,6,9,1600,900],
+            ["Sea Bass","Sea",400,1,12,0,2359],
+            ["Sea Butterfly","Sea",1000,12,3,0,2359],
+            ["Sea Horse","Sea",1100,4,11,0,2359],
+            ["Snapping Turtle","River",5000,4,10,2100,400],
+            ["Soft-shelled turtle","River",3750,8,9,1600,900],
+            ["Squid","Sea",500,12,8,0,2359],
+            ["Stringfish","River (Clifftop)",15000,12,3,1600,900],
+            ["Sturgeon","River (Mouth)",10000,9,3,0,2359],
+            ["Suckerfish","Sea",1500,6,9,0,2359],
+            ["Surgeonfish","Sea",1000,4,9,0,2359],
+            ["Sweetfish","River",900,7,9,0,2359],
+            ["Tadpole","Pond",100,3,7,0,2359],
+            ["Tilapia","River",800,6,10,0,2359],
+            ["Tuna","Pier",7000,11,4,0,2359],
+            ["Whale Shark","Sea",13000,6,9,0,2359],
+            ["Yellow Perch","River",300,10,3,0,2359],
+            ["Zebra Turkeyfish","Sea",500,4,11,0,2359],
+        ];
+
+        var fishSouth = [
+            ["Name","Location","Price","Month Start","Month End","Time Start","Time End"]
+        ];
+
+        var bugsNorth = [
+            ["Name","Location","Price","Month Start","Month End","Time Start","Time End"],
+            ["Agrias Butterfly","Flying",3000,4,9,800,1700],
+            ["Ant","On rotten food",80,1,12,0,2359],
+            ["Atlas Moth","On Trees",3000,4,9,1900,400],
+            ["Bagworm","Shaking Trees",600,1,12,0,2359],
+            ["Banded Dragonfly","Flying",4500,5,10,800,1700],
+            ["Bell Cricket","On the Ground",430,9,10,1700,800],
+            ["Blue Weevil beetle","On Trees (Coconut)",800,7,8,0,2359],
+            ["Brown Cicada","On Trees",250,7,8,800,1700],
+            ["Centipede","Hitting Rocks",300,9,6,1600,2300],
+            ["Cicada Shell","On Trees",10,7,8,0,2359],
+            ["Citrus Long-horned Beetle","On Tree Stumps",350,1,12,0,2359],
+            ["Common Bluebottle","Flying",300,4,8,400,1900],
+            ["Common Butterfly","Flying",160,9,6,400,1900],
+            ["Cricket","On the Ground",130,9,11,1700,800],
+            ["Cyclommatus Stag","On Trees (Coconut)",8000,7,8,1700,800],
+            ["Damselfly","Flying",500,11,2,0,2359],
+            ["Darner Dragonfly","Flying",230,4,10,800,1700],
+            ["Diving Beetle","On Ponds and Rivers",800,5,9,800,1900],
+            ["Drone Beetle","On Trees",200,6,8,0,2359],
+            ["Dung Beetle","On the Ground (rolling snowballs)",3000,12,2,0,2359],
+            ["Earth-boring Dung Beetle","On the Ground",300,7,9,0,2359],
+            ["Emperor Butterfly","Flying",4000,12,3,1700,800],
+            ["Emperor Butterfly","Flying",4000,6,9,1700,800],
+            ["Evening Cicada","On Trees, Morning",550,7,8,400,800],
+            ["Evening Cicada","On Trees, Afternoon",550,7,8,1600,1900],
+            ["Firefly","Flying",300,6,6,1900,400],
+            ["Flea","Villager's Heads",70,4,11,0,2359],
+            ["Fly","On Trash Items",60,1,12,0,2359],
+            ["Giant Cicada","On Trees",500,7,8,800,1700],
+            ["Giant Stag","On Trees",10000,7,8,2300,800],
+            ["Giant Water bug","On Ponds and Rivers",2000,4,9,1900,800],
+            ["Giraffe Stag","On Trees (Coconut)",12000,7,8,1700,800],
+            ["Golden Stag","On Trees (Coconut)",12000,7,8,1700,800],
+            ["Goliath Beetle","On Trees (Coconut)",8000,6,9,1700,800],
+            ["Grasshopper","On the Ground",160,7,9,800,1700],
+            ["Great Purple Emperor","Flying",3000,5,8,400,1900],
+            ["Hermit Crab","Beach disguised as Shells",1000,1,12,1900,800],
+            ["Honeybee","Flying",200,3,7,800,1700],
+            ["Horned Atlas","On Trees (Coconut)",8000,7,8,1700,800],
+            ["Horned Dynastid","On Trees",1350,7,8,1700,800],
+            ["Horned Elephant","On Trees (Coconut)",8000,7,8,1700,800],
+            ["Horned Hercules","On Trees (Coconut)",12000,7,8,1700,800],
+            ["Jewel Beetle","On Tree Stumps",2400,4,8,0,2359],
+            ["Ladybug","On Flowers",200,3,6,800,1700],
+            ["Ladybug","On Flowers",200,10,10,800,1700],
+            ["Long Locust","On the Ground",200,4,11,800,1900],
+            ["Madagascan Sunset Moth","Flying",2500,4,9,800,1600],
+            ["Man-faced Stink Bug","On Flowers",1000,3,10,1900,800],
+            ["Mantis","On Flowers",430,3,11,800,1700],
+            ["Migratory Locust","On the Ground",600,8,11,800,1900],
+            ["Miyama Stag","On Trees",1000,7,8,0,2359],
+            ["Mole Cricket","Underground",500,11,5,0,2359],
+            ["Monarch Butterfly","Flying",140,9,11,400,1700],
+            ["Mosquito","Flying",130,6,9,1700,400],
+            ["Moth","Flying by Light",130,1,12,1900,400],
+            ["Orchid Mantis","On Flowers (White)",2400,3,11,800,1700],
+            ["Paper Kite Butterfly","Flying",1000,1,12,800,1900],
+            ["Peacock Butterfly","Flying by Hybrid Flowers",2500,3,6,400,1900],
+            ["Pill Bug","Hitting Rocks",250,9,6,2300,1600],
+            ["Pondskater","On Ponds and Rivers",130,5,9,800,1900],
+            ["Queen Alexandras Birdwing","Flying",4000,5,9,800,1600],
+            ["Rainbow Stag","On Trees",6000,6,9,1900,800],
+            ["Rajah Brookes Birdwing","Flying",2500,12,2,800,1700],
+            ["Rajah Brookes Birdwing","Flying",2500,4,9,800,1700],
+            ["Red Dragonfly","Flying",180,9,10,800,1900],
+            ["Rice Grasshopper","On the Ground",160,8,11,800,1900],
+            ["Robust Cicada","On Trees",300,7,8,800,1700],
+            ["Rosalia Batesi Beetle","On Tree Stumps",3000,5,9,0,2359],
+            ["Saw Stag","On Trees",2000,7,8,0,2359],
+            ["Scarab Beetle","On Trees",10000,7,8,2300,800],
+            ["Scorpion","On the Ground",8000,5,10,1900,400],
+            ["Snail","On Rocks and Bushes (Rain)",250,1,12,0,2359],
+            ["Spider","Shaking Trees",600,1,12,1900,800],
+            ["Stinkbug","On Flowers",120,3,10,0,2359],
+            ["Tarantula","On the Ground",8000,11,4,1900,400],
+            ["Tiger Beetle","On the Ground",1500,2,10,0,2359],
+            ["Tiger Butterfly","Flying",240,3,9,400,1900],
+            ["Violin Beetle","On Tree Stumps",450,5,6,0,2359],
+            ["Violin Beetle","On Tree Stumps",450,9,11,0,2359],
+            ["Walker Cicada","On Trees",400,8,9,800,1700],
+            ["Walking Leaf","Under Trees Disguised as Leaves",600,7,9,0,2359],
+            ["Walking Stick","On Trees, Morning",600,7,11,400,800],
+            ["Walking Stick","On Trees, Afternoon",600,7,11,1700,1900],
+            ["Wasp","Shaking Trees",2500,1,12,0,2359],
+            ["Wharf Roach","On Beach Rocks",200,1,12,0,2359],
+            ["Yellow Butterfly","Flying",160,3,6,400,1900],
+            ["Yellow Butterfly","Flying",160,9,10,400,1900]
+        ];
+        
+        var bugsSouth = [
+            ["Name","Location","Price","Month Start","Month End","Time Start","Time End"]
+        ];
+
+        var creaturesNorth = [
+            ["Name","Location","Price","Month Start","Month End","Time Start","Time End"],
+            ["Acorn Barnacle","Tiny",600,1,12,0,2359],
+            ["Chambered Nautilus","Medium",1800,3,6,1600,900],
+            ["Chambered Nautilus","Medium",1800,9,11,1600,900],
+            ["Dungeness Crab","Medium",1900,11,5,0,2359],
+            ["Firefly Squid","Tiny",1400,3,6,2100,400],
+            ["Flatworm","Tiny",700,8,9,1600,900],
+            ["Gazami Crab","Medium",2200,6,11,0,2359],
+            ["Giant Isopod","Medium, Morning",12000,7,10,900,1600],
+            ["Giant Isopod","Medium, Evening",12000,7,10,2100,400],
+            ["Gigas Giant Clam","Huge",15000,5,9,0,2359],
+            ["Horseshoe Crab","Medium",2500,7,9,2100,400],
+            ["Lobster","Large",4500,12,1,0,2359],
+            ["Lobster","Large",4500,4,6,0,2359],
+            ["Mantis Shrimp","Small",2500,1,12,1600,900],
+            ["Moon Jellyfish","Small",600,7,9,0,2359],
+            ["Mussel","Small",1500,6,12,0,2359],
+            ["Octopus","Medium",1200,1,12,0,2359],
+            ["Oyster","Small",1100,9,2,0,2359],
+            ["Pearl Oyster","Medium",2800,1,12,0,2359],
+            ["Red King Crab","Large",8000,11,3,0,2359],
+            ["Scallop","Medium",1200,1,12,0,2359],
+            ["Sea Anemone","Large",500,1,12,0,2359],
+            ["Sea Cucumber","Medium",500,11,4,0,2359],
+            ["Sea Grapes","Small",900,6,9,0,2359],
+            ["Sea Pig","Small",10000,11,2,1600,900],
+            ["Sea Pineapple","Small",1500,4,8,0,2359],
+            ["Sea Slug","Tiny",600,1,12,0,2359],
+            ["Sea Star","Small",500,1,12,0,2359],
+            ["Sea Urchin","Small",1700,5,9,0,2359],
+            ["Seaweed","Large",600,10,7,0,2359],
+            ["Slate Pencil Urchin","Medium",2000,5,9,1600,900],
+            ["Snow Crab","Large",6000,11,4,0,2359],
+            ["Spider Crab","Huge",12000,3,4,0,2359],
+            ["Spiny Lobster","Large",5000,10,12,2100,400],
+            ["Spotted Garden Eel","Small",1100,5,10,400,2100],
+            ["Sweet Shrimp","Small",1400,9,2,1600,900],
+            ["Tiger Prawn","Small",3000,6,9,1600,900],
+            ["Turban Shell","Small",1000,3,5,0,2359],
+            ["Turban Shell","Small",1000,9,12,0,2359],
+            ["Umbrella Octopus","Small",6000,3,5,0,2359],
+            ["Umbrella Octopus","Small",6000,9,11,0,2359],
+            ["Vampire Squid","Medium",10000,5,8,1600,900],
+            ["Venus' Flower Basket","Medium",5000,10,2,0,2359],
+            ["Whelk","Small",1000,1,12,0,2359]
+        ];
+              
+        /* -------------------- DATA TABLES-------------------- */
+
+        /* -------------------- GLOBAL VARIABLES -------------------- */
+        var tableNewFish = document.getElementById('newFish').getElementsByTagName('tbody')[0];
+        var tableOldFish = document.getElementById('oldFish').getElementsByTagName('tbody')[0];
+        var tableNewBugs = document.getElementById('newBugs').getElementsByTagName('tbody')[0];
+        var tableOldBugs = document.getElementById('oldBugs').getElementsByTagName('tbody')[0];
+        var tableNewCreatures = document.getElementById('newCreatures').getElementsByTagName('tbody')[0];
+        var tableOldCreatures = document.getElementById('oldCreatures').getElementsByTagName('tbody')[0];
+        var tableFish = document.getElementById('tableFish').getElementsByTagName('tbody')[0];
+        var tableBugs = document.getElementById('tableBugs').getElementsByTagName('tbody')[0];
+        var tableCreatures = document.getElementById('tableCreatures').getElementsByTagName('tbody')[0];
+        /* -------------------- GLOBAL VARIABLES -------------------- */
+
+        /* -------------------- NEW FISH -------------------- */
+        for (var i = 1; i < fishNorth.length; i++) {
+            if (fishNorth[i][3] == currentMonth) {
+                var newRow = tableNewFish.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                cell1.innerHTML = fishNorth[i][0];
+                cell1.className = "cellLeft";
+                cell2.innerHTML = fishNorth[i][1];
+                cell2.className = "cellCenter";
+                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                cell3.className = "cellRight";
+            }
+        }
+        /* -------------------- NEW FISH -------------------- */
+
+        /* -------------------- NEW BUGS -------------------- */
+        for (var i = 1; i < bugsNorth.length; i++) {
+            if (bugsNorth[i][3] == currentMonth) {
+                var newRow = tableNewBugs.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                cell1.innerHTML = bugsNorth[i][0];
+                cell1.className = "cellLeft";
+                cell2.innerHTML = bugsNorth[i][1];
+                cell2.className = "cellCenter";
+                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                cell3.className = "cellRight";
+            }
+        }
+        /* -------------------- NEW BUGS -------------------- */
+
+        /* -------------------- NEW CREATURES -------------------- */
+        for (var i = 1; i < creaturesNorth.length; i++) {
+            if (creaturesNorth[i][3] == currentMonth) {
+                var newRow = tableNewCreatures.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                cell1.innerHTML = creaturesNorth[i][0];
+                cell1.className = "cellLeft";
+                cell2.innerHTML = creaturesNorth[i][1];
+                cell2.className = "cellCenter";
+                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                cell3.className = "cellRight";
+            }
+        }
+        /* -------------------- NEW CREATURES -------------------- */
+
+        /* -------------------- OLD FISH -------------------- */
+        for (var i = 1; i < fishNorth.length; i++) {
+            if (fishNorth[i][4] == currentMonth) {
+                var newRow = tableOldFish.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                cell1.innerHTML = fishNorth[i][0];
+                cell1.className = "cellLeft";
+                cell2.innerHTML = fishNorth[i][1];
+                cell2.className = "cellCenter";
+                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                cell3.className = "cellRight";
+            }
+        }
+        /* -------------------- OLD FISH -------------------- */
+
+        /* -------------------- OLD BUGS -------------------- */
+        for (var i = 1; i < bugsNorth.length; i++) {
+            if (bugsNorth[i][4] == currentMonth) {
+                var newRow = tableOldBugs.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                cell1.innerHTML = bugsNorth[i][0];
+                cell1.className = "cellLeft";
+                cell2.innerHTML = bugsNorth[i][1];
+                cell2.className = "cellCenter";
+                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                cell3.className = "cellRight";
+            }
+        }
+        /* -------------------- OLD BUGS -------------------- */
+
+        /* -------------------- OLD CREATURES -------------------- */
+        for (var i = 1; i < creaturesNorth.length; i++) {
+            if (creaturesNorth[i][4] == currentMonth) {
+                var newRow = tableOldCreatures.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                cell1.innerHTML = creaturesNorth[i][0];
+                cell1.className = "cellLeft";
+                cell2.innerHTML = creaturesNorth[i][1];
+                cell2.className = "cellCenter";
+                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                cell3.className = "cellRight";
+            }
+        }
+        /* -------------------- OLD CREATURES -------------------- */
+
+                /* -------------------- COMPLETE FISH -------------------- */
+        //Checks Date and Time for Fish
+        for (var i = 1; i < fishNorth.length; i++) {
+            //If statement for backwards month range, ex: Oct - Jan
+            if (fishNorth[i][3] > fishNorth[i][4]) {
+                //If statement for backwards Time Range
+                //Example: 23:00 - 08:00
+                if (fishNorth[i][5] > fishNorth[i][6]) {
+                    if ((
+                        (fishNorth[i][3] <= currentMonth)||(fishNorth[i][4] >= currentMonth))
+                        &&
+                        ((fishNorth[i][5] >= currentHour)||(fishNorth[i][6] <= currentHour))) {
+                            console.log(fishNorth[i][0]);
+                            var newRow = tableFish.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = fishNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = fishNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        }
+                //Else statement for regular Time Range
+                //Example: 12:00 - 20:00
+                } else {
+                    if ((
+                    (   fishNorth[i][3] <= currentMonth)||(fishNorth[i][4] >= currentMonth)) //3   11 - 4
+                        &&
+                        ((fishNorth[i][5] <= currentHour)&&(fishNorth[i][6] >= currentHour))) {
+                            console.log(fishNorth[i][0]);
+                            var newRow = tableFish.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = fishNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = fishNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+            };
+            //Else statement for regular month range, ex: Mar - Nov
+            } else { 
+                //If statement for backwards Time Range
+                //Example: 23:00 - 08:00
+                if (fishNorth[i][5] > fishNorth[i][6]) {
+                    if ((
+                        (fishNorth[i][3] <= currentMonth)&&(fishNorth[i][4] >= currentMonth))
+                        &&
+                        ((fishNorth[i][5] <= currentHour)||(fishNorth[i][6] >= currentHour))){  
+                            console.log(fishNorth[i][0]);
+                            var newRow = tableFish.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = fishNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = fishNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+                //Else statement for regular Time Range
+                //Example: 12:00 - 20:00
+                } else {
+                    if ((
+                        (fishNorth[i][3] <= currentMonth)&&(fishNorth[i][4] >= currentMonth))
+                        &&
+                        ((fishNorth[i][5] <= currentHour)&&(fishNorth[i][6] >= currentHour))) {
+                            console.log(fishNorth[i][0]);
+                            var newRow = tableFish.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = fishNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = fishNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+                };
+            };
+        };
+        /* -------------------- COMPLETE FISH -------------------- */
+
+        /* -------------------- COMPLETE BUGS -------------------- */
+        //Checks Date and Time for Bugs
+        for (var i = 1; i < bugsNorth.length; i++) {
+            //If statement for backwards month range, ex: Oct - Jan
+            if (bugsNorth[i][3] > bugsNorth[i][4]) {
+                //If statement for backwards Time Range
+                //Example: 23:00 - 08:00
+                if (bugsNorth[i][5] > bugsNorth[i][6]) {
+                    if ((
+                        (bugsNorth[i][3] <= currentMonth)||(bugsNorth[i][4] >= currentMonth))
+                        &&
+                        ((bugsNorth[i][5] >= currentHour)||(bugsNorth[i][6] <= currentHour))) {
+                            console.log(bugsNorth[i][0]);
+                            var newRow = tableBugs.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = bugsNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = bugsNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        }
+                //Else statement for regular Time Range
+                //Example: 12:00 - 20:00
+                } else {
+                    if ((
+                    (   bugsNorth[i][3] <= currentMonth)||(bugsNorth[i][4] >= currentMonth)) //3   11 - 4
+                        &&
+                        ((bugsNorth[i][5] <= currentHour)&&(bugsNorth[i][6] >= currentHour))) {
+                            console.log(bugsNorth[i][0]);
+                            var newRow = tableBugs.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = bugsNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = bugsNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+            };
+            //Else statement for regular month range, ex: Mar - Nov
+            } else { 
+                //If statement for backwards Time Range
+                //Example: 23:00 - 08:00
+                if (bugsNorth[i][5] > bugsNorth[i][6]) {
+                    if ((
+                        (bugsNorth[i][3] <= currentMonth)&&(bugsNorth[i][4] >= currentMonth))
+                        &&
+                        ((bugsNorth[i][5] <= currentHour)||(bugsNorth[i][6] >= currentHour))){  
+                            console.log(bugsNorth[i][0]);
+                            var newRow = tableBugs.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = bugsNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = bugsNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+                //Else statement for regular Time Range
+                //Example: 12:00 - 20:00
+                } else {
+                    if ((
+                        (bugsNorth[i][3] <= currentMonth)&&(bugsNorth[i][4] >= currentMonth))
+                        &&
+                        ((bugsNorth[i][5] <= currentHour)&&(bugsNorth[i][6] >= currentHour))) {
+                            console.log(bugsNorth[i][0]);
+                            var newRow = tableBugs.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = bugsNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = bugsNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+                };
+            };
+        };
+        /* -------------------- COMPLETE BUGS -------------------- */
+
+        /* -------------------- COMPLETE CREATURES -------------------- */
+        //Checks Date and Time for Bugs
+        for (var i = 1; i < creaturesNorth.length; i++) {
+            //If statement for backwards month range, ex: Oct - Jan
+            if (creaturesNorth[i][3] >creaturesNorth[i][4]) {
+                //If statement for backwards Time Range
+                //Example: 23:00 - 08:00
+                if (creaturesNorth[i][5] >creaturesNorth[i][6]) {
+                    if ((
+                        (creaturesNorth[i][3] <= currentMonth)||(creaturesNorth[i][4] >= currentMonth))
+                        &&
+                        ((creaturesNorth[i][5] >= currentHour)||(creaturesNorth[i][6] <= currentHour))) {
+                            console.log(creaturesNorth[i][0]);
+                            var newRow = tableCreatures.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = creaturesNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = creaturesNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        }
+                //Else statement for regular Time Range
+                //Example: 12:00 - 20:00
+                } else {
+                    if ((
+                    (   creaturesNorth[i][3] <= currentMonth)||(creaturesNorth[i][4] >= currentMonth)) //3   11 - 4
+                        &&
+                        ((creaturesNorth[i][5] <= currentHour)&&(creaturesNorth[i][6] >= currentHour))) {
+                            console.log(creaturesNorth[i][0]);
+                            var newRow = tableCreatures.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = creaturesNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = creaturesNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+            };
+            //Else statement for regular month range, ex: Mar - Nov
+            } else { 
+                //If statement for backwards Time Range
+                //Example: 23:00 - 08:00
+                if (creaturesNorth[i][5] > creaturesNorth[i][6]) {
+                    if ((
+                        (creaturesNorth[i][3] <= currentMonth)&&(creaturesNorth[i][4] >= currentMonth))
+                        &&
+                        ((creaturesNorth[i][5] <= currentHour)||(creaturesNorth[i][6] >= currentHour))){  
+                            console.log(creaturesNorth[i][0]);
+                            var newRow = tableCreatures.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = creaturesNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = creaturesNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+                //Else statement for regular Time Range
+                //Example: 12:00 - 20:00
+                } else {
+                    if ((
+                        (creaturesNorth[i][3] <= currentMonth)&&(creaturesNorth[i][4] >= currentMonth))
+                        &&
+                        ((creaturesNorth[i][5] <= currentHour)&&(creaturesNorth[i][6] >= currentHour))) {
+                            console.log(creaturesNorth[i][0]);
+                            var newRow = tableCreatures.insertRow();
+                            var cell1 = newRow.insertCell(0);
+                            var cell2 = newRow.insertCell(1);
+                            var cell3 = newRow.insertCell(2);
+                            cell1.innerHTML = creaturesNorth[i][0];
+                            cell1.className = "cellLeft";
+                            cell2.innerHTML = creaturesNorth[i][1];
+                            cell2.className = "cellCenter";
+                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                            cell3.className = "cellRight";
+                        };
+                };
+            };
+        };
+        /* -------------------- COMPLETE CREATURES -------------------- */
+    </script>
+
+    <!-- Bootstrap Scripts -->    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
