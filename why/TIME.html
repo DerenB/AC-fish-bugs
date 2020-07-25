@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Practice</title>
+</head>
+<body>
+    <p>Hello World</p>
+    <p id="date"></p>
+    <script>
+        var todayDate = new Date();
+        var day = ("0" + todayDate.getDate()).slice(-2);
+        var month = ("0" + (todayDate.getMonth() + 1)).slice(-2);
+
+        document.getElementById('date').innerHTML = day + " " + month;
+    </script>
+
+</body>
+</html>
