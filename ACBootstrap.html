@@ -35,6 +35,22 @@
             width: 150px;
             border: solid black 1px;
         }
+        .hemButton {
+            background-color: #82ff96;
+            width: 200px;
+            height: 60px;
+            border: solid black 3px;
+            border-radius: 15px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }   
+        #dataLoad {
+            text-align: center;
+            margin-top: 25px;
+            text-decoration: underline;
+            text-transform: uppercase;
+            margin-bottom: -25px;
+        }
         /* ---------- NAVBAR & HEADER STYLES ---------- */
 
         /* ---------- TABLE STYLES ---------- */
@@ -76,7 +92,7 @@
 
     </style>
 </head>
-<body>
+<body onload="north()">
     <!-- NAV BAR -->
     <nav id="navBar" class="navbar navbar-dark navbar-fixed-top">
         <div class="container">
@@ -95,12 +111,15 @@
         <p class="lead">
             A list of all the Fish, Bugs, & Sea Creatures available to be caught at the time this page was loaded. 
         </p>
+        <button class="hemButton" type="button" onclick="north()">Northern Hemisphere</button>
+        <button class="hemButton" type="button" onclick="south()">Southern Hemisphere</button>
         <p>Additional Information:</p>
         <a href="https://animalcrossing.fandom.com/wiki/Fish_(New_Horizons)" target="_blank" title="Fandom Fish" class="btn btn-primary">Fish</a>
         <a href="https://animalcrossing.fandom.com/wiki/Bugs_(New_Horizons)" target="_blank" title="Fandom Bugs" class="btn btn-primary">Bugs</a>
         <a href="https://animalcrossing.fandom.com/wiki/Deep-sea_creatures_(New_Horizons)" target="_blank" title="Fandom Creatures" class="btn btn-primary">Sea Creatures</a>
         <p class="headerDate">Page Loaded at:</p>
         <p id="dateTime" class="headerDate"></p>
+        <p id="dataLoad"></p>
     </section>
 
     <!-- INFORMATION TABLES -->
@@ -116,7 +135,7 @@
                                     <th colspan="3" class="tableHeader">Fish Arriving This Month</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody1">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Location</td>
@@ -136,7 +155,7 @@
                                     <th colspan="3" class="tableHeader">Bugs Arriving This Month</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody2">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Location</td>
@@ -156,7 +175,7 @@
                                     <th colspan="3" class="tableHeader">Sea Creatures Arriving This Month</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody3">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Size</td>
@@ -178,7 +197,7 @@
                                     <th colspan="3" class="tableHeader">Fish Leaving This Month</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody4">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Location</td>
@@ -198,7 +217,7 @@
                                     <th colspan="3" class="tableHeader">Bugs Leaving This Month</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody5">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Location</td>
@@ -218,7 +237,7 @@
                                     <th colspan="3" class="tableHeader">Sea Creatures Leaving This Month</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody6">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Size</td>
@@ -240,7 +259,7 @@
                                     <th colspan="3" class="tableHeader">All Available Fish</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody7">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Location</td>
@@ -260,7 +279,7 @@
                                     <th colspan="3" class="tableHeader">All Available Bugs</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody8">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Location</td>
@@ -280,7 +299,7 @@
                                     <th colspan="3" class="tableHeader">All Available Creatures</th>
                                 </tr>      
                             </thead>
-                            <tbody>
+                            <tbody id="tbody9">
                                 <tr>
                                     <td class="cellLeft subHeader">Name</td>
                                     <td class="cellCenter subHeader">Size</td>
@@ -742,6 +761,55 @@
             ["Venus' Flower Basket","Medium",5000,10,2,0,2359],
             ["Whelk","Small",1000,1,12,0,2359]
         ];
+
+        var creaturesSouth = [
+            ["Name","Location","Price","Month Start","Month End","Time Start","Time End"],
+            ["Abalone","Medium",2000,6,1,1600,900],
+            ["Acorn barnacle","Tiny",600,1,12,0,2359],
+            ["Chambered nautilus","Medium",1800,3,6,1600,900],
+            ["Chambered nautilus","Medium",1800,9,11,1600,900],
+            ["Dungeness crab","Medium",1900,11,5,0,2359],
+            ["Firefly squid","Tiny",1400,3,6,2100,400],
+            ["Flatworm","Tiny",700,8,9,1600,900],
+            ["Gazami crab","Medium",2200,6,11,0,2359],
+            ["Giant isopod","Medium",12000,7,10,900,1600],
+            ["Giant isopod","Medium",12000,7,10,2100,400],
+            ["Gigas giant clam","Huge",15000,5,9,0,2359],
+            ["Horseshoe Crab","Medium",2500,7,9,2100,400],
+            ["Lobster","Large",4500,4,6,0,2359],
+            ["Lobster","Large",4500,12,1,0,2359],
+            ["Mantis shrimp","Small",2500,1,12,1600,900],
+            ["Moon jellyfish","Small",600,7,9,0,2359],
+            ["Mussel","Small",1500,6,12,0,2359],
+            ["Octopus","Medium",1200,1,12,0,2359],
+            ["Oyster","Small",1100,9,2,0,2359],
+            ["Pearl oyster","Small",2800,1,12,0,2359],
+            ["Red king crab","Large",8000,11,3,0,2359],
+            ["Scallop","Medium",1200,1,12,0,2359],
+            ["Sea anemone","Large",500,1,12,0,2359],
+            ["Sea cucumber","Medium",500,11,4,0,2359],
+            ["Sea grapes","Small",900,6,9,0,2359],
+            ["Sea pig","Small",10000,11,2,1600,900],
+            ["Sea pineapple","Small",1500,4,8,0,2359],
+            ["Sea slug","Tiny",600,1,12,0,2359],
+            ["Sea star","Small",500,1,12,0,2359],
+            ["Sea urchin","Small",1700,5,9,0,2359],
+            ["Seaweed","Large",600,10,7,0,2359],
+            ["Slate pencil urchin","Medium",2000,5,9,1600,900],
+            ["Snow crab","Large",6000,11,4,0,2359],
+            ["Spider crab","Huge",12000,3,4,0,2359],
+            ["Spiny lobster","Large",5000,10,12,2100,400],
+            ["Spotted garden eel","Small",1100,5,10,400,2100],
+            ["Sweet shrimp","Small",1400,9,2,1600,900],
+            ["Tiger prawn","Small",3000,6,9,1600,900],
+            ["Turban shell","Small",1000,3,5,0,2359],
+            ["Turban shell","Small",1000,9,12,0,2359],
+            ["Umbrella octopus","Small",6000,3,5,0,2359],
+            ["Umbrella octopus","Small",6000,9,11,0,2359],
+            ["Vampire squid","Medium",10000,5,8,1600,900],
+            ["Venus' flower basket","Medium",5000,10,2,0,2359],
+            ["Whelk","Small",1000,1,12,0,2359]
+    ];
               
         /* -------------------- DATA TABLES-------------------- */
 
@@ -755,376 +823,769 @@
         var tableFish = document.getElementById('tableFish').getElementsByTagName('tbody')[0];
         var tableBugs = document.getElementById('tableBugs').getElementsByTagName('tbody')[0];
         var tableCreatures = document.getElementById('tableCreatures').getElementsByTagName('tbody')[0];
+    
         /* -------------------- GLOBAL VARIABLES -------------------- */
 
-        /* -------------------- NEW FISH -------------------- */
-        for (var i = 1; i < fishNorth.length; i++) {
-            if (fishNorth[i][3] == currentMonth) {
-                var newRow = tableNewFish.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                cell1.innerHTML = fishNorth[i][0];
-                cell1.className = "cellLeft";
-                cell2.innerHTML = fishNorth[i][1];
-                cell2.className = "cellCenter";
-                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
-                cell3.className = "cellRight";
-            }
-        }
-        /* -------------------- NEW FISH -------------------- */
+        /* -------------------- NORTHERN HEMISPHERE -------------------- */
+        function north() {
+            var zone = document.getElementById('dataLoad').innerHTML = "Northern Hemisphere";
 
-        /* -------------------- NEW BUGS -------------------- */
-        for (var i = 1; i < bugsNorth.length; i++) {
-            if (bugsNorth[i][3] == currentMonth) {
-                var newRow = tableNewBugs.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                cell1.innerHTML = bugsNorth[i][0];
-                cell1.className = "cellLeft";
-                cell2.innerHTML = bugsNorth[i][1];
-                cell2.className = "cellCenter";
-                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
-                cell3.className = "cellRight";
-            }
-        }
-        /* -------------------- NEW BUGS -------------------- */
+            /* -------------------- CLEAR PREVIOUS DATA -------------------- */
+            $("tbody tr").remove();
+            /* -------------------- CLEAR PREVIOUS DATA -------------------- */
 
-        /* -------------------- NEW CREATURES -------------------- */
-        for (var i = 1; i < creaturesNorth.length; i++) {
-            if (creaturesNorth[i][3] == currentMonth) {
-                var newRow = tableNewCreatures.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                cell1.innerHTML = creaturesNorth[i][0];
-                cell1.className = "cellLeft";
-                cell2.innerHTML = creaturesNorth[i][1];
-                cell2.className = "cellCenter";
-                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
-                cell3.className = "cellRight";
-            }
-        }
-        /* -------------------- NEW CREATURES -------------------- */
 
-        /* -------------------- OLD FISH -------------------- */
-        for (var i = 1; i < fishNorth.length; i++) {
-            if (fishNorth[i][4] == currentMonth) {
-                var newRow = tableOldFish.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                cell1.innerHTML = fishNorth[i][0];
-                cell1.className = "cellLeft";
-                cell2.innerHTML = fishNorth[i][1];
-                cell2.className = "cellCenter";
-                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
-                cell3.className = "cellRight";
+            /* -------------------- NEW FISH -------------------- */
+            for (var i = 1; i < fishNorth.length; i++) {
+                if (fishNorth[i][3] == currentMonth) {
+                    var newRow = tableNewFish.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = fishNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = fishNorth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
             }
-        }
-        /* -------------------- OLD FISH -------------------- */
+            /* -------------------- NEW FISH -------------------- */
 
-        /* -------------------- OLD BUGS -------------------- */
-        for (var i = 1; i < bugsNorth.length; i++) {
-            if (bugsNorth[i][4] == currentMonth) {
-                var newRow = tableOldBugs.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                cell1.innerHTML = bugsNorth[i][0];
-                cell1.className = "cellLeft";
-                cell2.innerHTML = bugsNorth[i][1];
-                cell2.className = "cellCenter";
-                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
-                cell3.className = "cellRight";
+            /* -------------------- NEW BUGS -------------------- */
+            for (var i = 1; i < bugsNorth.length; i++) {
+                if (bugsNorth[i][3] == currentMonth) {
+                    var newRow = tableNewBugs.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = bugsNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = bugsNorth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
             }
-        }
-        /* -------------------- OLD BUGS -------------------- */
+            /* -------------------- NEW BUGS -------------------- */
 
-        /* -------------------- OLD CREATURES -------------------- */
-        for (var i = 1; i < creaturesNorth.length; i++) {
-            if (creaturesNorth[i][4] == currentMonth) {
-                var newRow = tableOldCreatures.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                cell1.innerHTML = creaturesNorth[i][0];
-                cell1.className = "cellLeft";
-                cell2.innerHTML = creaturesNorth[i][1];
-                cell2.className = "cellCenter";
-                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
-                cell3.className = "cellRight";
+            /* -------------------- NEW CREATURES -------------------- */
+            for (var i = 1; i < creaturesNorth.length; i++) {
+                if (creaturesNorth[i][3] == currentMonth) {
+                    var newRow = tableNewCreatures.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = creaturesNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = creaturesNorth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
             }
-        }
-        /* -------------------- OLD CREATURES -------------------- */
+            /* -------------------- NEW CREATURES -------------------- */
 
-                /* -------------------- COMPLETE FISH -------------------- */
-        //Checks Date and Time for Fish
-        for (var i = 1; i < fishNorth.length; i++) {
-            //If statement for backwards month range, ex: Oct - Jan
-            if (fishNorth[i][3] > fishNorth[i][4]) {
-                //If statement for backwards Time Range
-                //Example: 23:00 - 08:00
-                if (fishNorth[i][5] > fishNorth[i][6]) {
-                    if ((
-                        (fishNorth[i][3] <= currentMonth)||(fishNorth[i][4] >= currentMonth))
-                        &&
-                        ((fishNorth[i][5] >= currentHour)||(fishNorth[i][6] <= currentHour))) {
-                            console.log(fishNorth[i][0]);
-                            var newRow = tableFish.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = fishNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = fishNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        }
-                //Else statement for regular Time Range
-                //Example: 12:00 - 20:00
-                } else {
-                    if ((
-                    (   fishNorth[i][3] <= currentMonth)||(fishNorth[i][4] >= currentMonth)) //3   11 - 4
-                        &&
-                        ((fishNorth[i][5] <= currentHour)&&(fishNorth[i][6] >= currentHour))) {
-                            console.log(fishNorth[i][0]);
-                            var newRow = tableFish.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = fishNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = fishNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
-            };
-            //Else statement for regular month range, ex: Mar - Nov
-            } else { 
-                //If statement for backwards Time Range
-                //Example: 23:00 - 08:00
-                if (fishNorth[i][5] > fishNorth[i][6]) {
-                    if ((
-                        (fishNorth[i][3] <= currentMonth)&&(fishNorth[i][4] >= currentMonth))
-                        &&
-                        ((fishNorth[i][5] <= currentHour)||(fishNorth[i][6] >= currentHour))){  
-                            console.log(fishNorth[i][0]);
-                            var newRow = tableFish.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = fishNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = fishNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
-                //Else statement for regular Time Range
-                //Example: 12:00 - 20:00
-                } else {
-                    if ((
-                        (fishNorth[i][3] <= currentMonth)&&(fishNorth[i][4] >= currentMonth))
-                        &&
-                        ((fishNorth[i][5] <= currentHour)&&(fishNorth[i][6] >= currentHour))) {
-                            console.log(fishNorth[i][0]);
-                            var newRow = tableFish.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = fishNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = fishNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
+            /* -------------------- OLD FISH -------------------- */
+            for (var i = 1; i < fishNorth.length; i++) {
+                if (fishNorth[i][4] == currentMonth) {
+                    var newRow = tableOldFish.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = fishNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = fishNorth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- OLD FISH -------------------- */
+
+            /* -------------------- OLD BUGS -------------------- */
+            for (var i = 1; i < bugsNorth.length; i++) {
+                if (bugsNorth[i][4] == currentMonth) {
+                    var newRow = tableOldBugs.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = bugsNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = bugsNorth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- OLD BUGS -------------------- */
+
+            /* -------------------- OLD CREATURES -------------------- */
+            for (var i = 1; i < creaturesNorth.length; i++) {
+                if (creaturesNorth[i][4] == currentMonth) {
+                    var newRow = tableOldCreatures.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = creaturesNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = creaturesNorth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- OLD CREATURES -------------------- */
+
+            /* -------------------- COMPLETE FISH -------------------- */
+            //Checks Date and Time for Fish
+            for (var i = 1; i < fishNorth.length; i++) {
+                //If statement for backwards month range, ex: Oct - Jan
+                if (fishNorth[i][3] > fishNorth[i][4]) {
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (fishNorth[i][5] > fishNorth[i][6]) {
+                        if ((
+                            (fishNorth[i][3] <= currentMonth)||(fishNorth[i][4] >= currentMonth))
+                            &&
+                            ((fishNorth[i][5] >= currentHour)||(fishNorth[i][6] <= currentHour))) {
+                                console.log(fishNorth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            }
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                        (   fishNorth[i][3] <= currentMonth)||(fishNorth[i][4] >= currentMonth)) //3   11 - 4
+                            &&
+                            ((fishNorth[i][5] <= currentHour)&&(fishNorth[i][6] >= currentHour))) {
+                                console.log(fishNorth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                };
+                //Else statement for regular month range, ex: Mar - Nov
+                } else { 
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (fishNorth[i][5] > fishNorth[i][6]) {
+                        if ((
+                            (fishNorth[i][3] <= currentMonth)&&(fishNorth[i][4] >= currentMonth))
+                            &&
+                            ((fishNorth[i][5] <= currentHour)||(fishNorth[i][6] >= currentHour))){  
+                                console.log(fishNorth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                            (fishNorth[i][3] <= currentMonth)&&(fishNorth[i][4] >= currentMonth))
+                            &&
+                            ((fishNorth[i][5] <= currentHour)&&(fishNorth[i][6] >= currentHour))) {
+                                console.log(fishNorth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishNorth[i][0] + ".png' alt='" + fishNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    };
                 };
             };
-        };
-        /* -------------------- COMPLETE FISH -------------------- */
+            /* -------------------- COMPLETE FISH -------------------- */
 
-        /* -------------------- COMPLETE BUGS -------------------- */
-        //Checks Date and Time for Bugs
-        for (var i = 1; i < bugsNorth.length; i++) {
-            //If statement for backwards month range, ex: Oct - Jan
-            if (bugsNorth[i][3] > bugsNorth[i][4]) {
-                //If statement for backwards Time Range
-                //Example: 23:00 - 08:00
-                if (bugsNorth[i][5] > bugsNorth[i][6]) {
-                    if ((
-                        (bugsNorth[i][3] <= currentMonth)||(bugsNorth[i][4] >= currentMonth))
-                        &&
-                        ((bugsNorth[i][5] >= currentHour)||(bugsNorth[i][6] <= currentHour))) {
-                            console.log(bugsNorth[i][0]);
-                            var newRow = tableBugs.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = bugsNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = bugsNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        }
-                //Else statement for regular Time Range
-                //Example: 12:00 - 20:00
-                } else {
-                    if ((
-                    (   bugsNorth[i][3] <= currentMonth)||(bugsNorth[i][4] >= currentMonth)) //3   11 - 4
-                        &&
-                        ((bugsNorth[i][5] <= currentHour)&&(bugsNorth[i][6] >= currentHour))) {
-                            console.log(bugsNorth[i][0]);
-                            var newRow = tableBugs.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = bugsNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = bugsNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
-            };
-            //Else statement for regular month range, ex: Mar - Nov
-            } else { 
-                //If statement for backwards Time Range
-                //Example: 23:00 - 08:00
-                if (bugsNorth[i][5] > bugsNorth[i][6]) {
-                    if ((
-                        (bugsNorth[i][3] <= currentMonth)&&(bugsNorth[i][4] >= currentMonth))
-                        &&
-                        ((bugsNorth[i][5] <= currentHour)||(bugsNorth[i][6] >= currentHour))){  
-                            console.log(bugsNorth[i][0]);
-                            var newRow = tableBugs.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = bugsNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = bugsNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
-                //Else statement for regular Time Range
-                //Example: 12:00 - 20:00
-                } else {
-                    if ((
-                        (bugsNorth[i][3] <= currentMonth)&&(bugsNorth[i][4] >= currentMonth))
-                        &&
-                        ((bugsNorth[i][5] <= currentHour)&&(bugsNorth[i][6] >= currentHour))) {
-                            console.log(bugsNorth[i][0]);
-                            var newRow = tableBugs.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = bugsNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = bugsNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
+            /* -------------------- COMPLETE BUGS -------------------- */
+            //Checks Date and Time for Bugs
+            for (var i = 1; i < bugsNorth.length; i++) {
+                //If statement for backwards month range, ex: Oct - Jan
+                if (bugsNorth[i][3] > bugsNorth[i][4]) {
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (bugsNorth[i][5] > bugsNorth[i][6]) {
+                        if ((
+                            (bugsNorth[i][3] <= currentMonth)||(bugsNorth[i][4] >= currentMonth))
+                            &&
+                            ((bugsNorth[i][5] >= currentHour)||(bugsNorth[i][6] <= currentHour))) {
+                                console.log(bugsNorth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            }
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                        (   bugsNorth[i][3] <= currentMonth)||(bugsNorth[i][4] >= currentMonth)) //3   11 - 4
+                            &&
+                            ((bugsNorth[i][5] <= currentHour)&&(bugsNorth[i][6] >= currentHour))) {
+                                console.log(bugsNorth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                };
+                //Else statement for regular month range, ex: Mar - Nov
+                } else { 
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (bugsNorth[i][5] > bugsNorth[i][6]) {
+                        if ((
+                            (bugsNorth[i][3] <= currentMonth)&&(bugsNorth[i][4] >= currentMonth))
+                            &&
+                            ((bugsNorth[i][5] <= currentHour)||(bugsNorth[i][6] >= currentHour))){  
+                                console.log(bugsNorth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                            (bugsNorth[i][3] <= currentMonth)&&(bugsNorth[i][4] >= currentMonth))
+                            &&
+                            ((bugsNorth[i][5] <= currentHour)&&(bugsNorth[i][6] >= currentHour))) {
+                                console.log(bugsNorth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsNorth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    };
                 };
             };
-        };
-        /* -------------------- COMPLETE BUGS -------------------- */
+            /* -------------------- COMPLETE BUGS -------------------- */
 
-        /* -------------------- COMPLETE CREATURES -------------------- */
-        //Checks Date and Time for Bugs
-        for (var i = 1; i < creaturesNorth.length; i++) {
-            //If statement for backwards month range, ex: Oct - Jan
-            if (creaturesNorth[i][3] >creaturesNorth[i][4]) {
-                //If statement for backwards Time Range
-                //Example: 23:00 - 08:00
-                if (creaturesNorth[i][5] >creaturesNorth[i][6]) {
-                    if ((
-                        (creaturesNorth[i][3] <= currentMonth)||(creaturesNorth[i][4] >= currentMonth))
-                        &&
-                        ((creaturesNorth[i][5] >= currentHour)||(creaturesNorth[i][6] <= currentHour))) {
-                            console.log(creaturesNorth[i][0]);
-                            var newRow = tableCreatures.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = creaturesNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = creaturesNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        }
-                //Else statement for regular Time Range
-                //Example: 12:00 - 20:00
-                } else {
-                    if ((
-                    (   creaturesNorth[i][3] <= currentMonth)||(creaturesNorth[i][4] >= currentMonth)) //3   11 - 4
-                        &&
-                        ((creaturesNorth[i][5] <= currentHour)&&(creaturesNorth[i][6] >= currentHour))) {
-                            console.log(creaturesNorth[i][0]);
-                            var newRow = tableCreatures.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = creaturesNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = creaturesNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
-            };
-            //Else statement for regular month range, ex: Mar - Nov
-            } else { 
-                //If statement for backwards Time Range
-                //Example: 23:00 - 08:00
-                if (creaturesNorth[i][5] > creaturesNorth[i][6]) {
-                    if ((
-                        (creaturesNorth[i][3] <= currentMonth)&&(creaturesNorth[i][4] >= currentMonth))
-                        &&
-                        ((creaturesNorth[i][5] <= currentHour)||(creaturesNorth[i][6] >= currentHour))){  
-                            console.log(creaturesNorth[i][0]);
-                            var newRow = tableCreatures.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = creaturesNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = creaturesNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
-                //Else statement for regular Time Range
-                //Example: 12:00 - 20:00
-                } else {
-                    if ((
-                        (creaturesNorth[i][3] <= currentMonth)&&(creaturesNorth[i][4] >= currentMonth))
-                        &&
-                        ((creaturesNorth[i][5] <= currentHour)&&(creaturesNorth[i][6] >= currentHour))) {
-                            console.log(creaturesNorth[i][0]);
-                            var newRow = tableCreatures.insertRow();
-                            var cell1 = newRow.insertCell(0);
-                            var cell2 = newRow.insertCell(1);
-                            var cell3 = newRow.insertCell(2);
-                            cell1.innerHTML = creaturesNorth[i][0];
-                            cell1.className = "cellLeft";
-                            cell2.innerHTML = creaturesNorth[i][1];
-                            cell2.className = "cellCenter";
-                            cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
-                            cell3.className = "cellRight";
-                        };
+            /* -------------------- COMPLETE CREATURES -------------------- */
+            //Checks Date and Time for Bugs
+            for (var i = 1; i < creaturesNorth.length; i++) {
+                //If statement for backwards month range, ex: Oct - Jan
+                if (creaturesNorth[i][3] >creaturesNorth[i][4]) {
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (creaturesNorth[i][5] >creaturesNorth[i][6]) {
+                        if ((
+                            (creaturesNorth[i][3] <= currentMonth)||(creaturesNorth[i][4] >= currentMonth))
+                            &&
+                            ((creaturesNorth[i][5] >= currentHour)||(creaturesNorth[i][6] <= currentHour))) {
+                                console.log(creaturesNorth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            }
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                        (   creaturesNorth[i][3] <= currentMonth)||(creaturesNorth[i][4] >= currentMonth)) //3   11 - 4
+                            &&
+                            ((creaturesNorth[i][5] <= currentHour)&&(creaturesNorth[i][6] >= currentHour))) {
+                                console.log(creaturesNorth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                };
+                //Else statement for regular month range, ex: Mar - Nov
+                } else { 
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (creaturesNorth[i][5] > creaturesNorth[i][6]) {
+                        if ((
+                            (creaturesNorth[i][3] <= currentMonth)&&(creaturesNorth[i][4] >= currentMonth))
+                            &&
+                            ((creaturesNorth[i][5] <= currentHour)||(creaturesNorth[i][6] >= currentHour))){  
+                                console.log(creaturesNorth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                            (creaturesNorth[i][3] <= currentMonth)&&(creaturesNorth[i][4] >= currentMonth))
+                            &&
+                            ((creaturesNorth[i][5] <= currentHour)&&(creaturesNorth[i][6] >= currentHour))) {
+                                console.log(creaturesNorth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesNorth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesNorth[i][0] + ".png' alt='" + creaturesNorth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    };
                 };
             };
-        };
-        /* -------------------- COMPLETE CREATURES -------------------- */
+            /* -------------------- COMPLETE CREATURES -------------------- */
+        }
+        /* -------------------- NORTHERN HEMISPHERE -------------------- */
+
+        /* -------------------- SOUTHERN HEMISPHERE -------------------- */
+        function south() {
+            var zone = document.getElementById('dataLoad').innerHTML = "Southern Hemisphere";
+
+            /* -------------------- CLEAR PREVIOUS DATA -------------------- */
+            $("tbody tr").remove();
+            /* -------------------- CLEAR PREVIOUS DATA -------------------- */
+
+            /* -------------------- NEW FISH -------------------- */
+            for (var i = 1; i < fishSouth.length; i++) {
+                if (fishSouth[i][3] == currentMonth) {
+                    var newRow = tableNewFish.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = fishSouth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = fishSouth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Fish/" + fishSouth[i][0] + ".png' alt='" + fishSouth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- NEW FISH -------------------- */
+
+            /* -------------------- NEW BUGS -------------------- */
+            for (var i = 1; i < bugsSouth.length; i++) {
+                if (bugsSouth[i][3] == currentMonth) {
+                    var newRow = tableNewBugs.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = bugsSouth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = bugsSouth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Bugs/" + bugsSouth[i][0] + ".png' alt='" + bugsNorth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- NEW BUGS -------------------- */
+
+            /* -------------------- NEW CREATURES -------------------- */
+            for (var i = 1; i < creaturesSouth.length; i++) {
+                if (creaturesSouth[i][3] == currentMonth) {
+                    var newRow = tableNewCreatures.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = creaturesSouth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = creaturesSouth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Creatures/" + creaturesSouth[i][0] + ".png' alt='" + creaturesSouth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- NEW CREATURES -------------------- */
+
+            /* -------------------- OLD FISH -------------------- */
+            for (var i = 1; i < fishSouth.length; i++) {
+                if (fishSouth[i][4] == currentMonth) {
+                    var newRow = tableOldFish.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = fishSouth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = fishSouth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Fish/" + fishSouth[i][0] + ".png' alt='" + fishSouth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- OLD FISH -------------------- */
+
+            /* -------------------- OLD BUGS -------------------- */
+            for (var i = 1; i < bugsSouth.length; i++) {
+                if (bugsSouth[i][4] == currentMonth) {
+                    var newRow = tableOldBugs.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = bugsNorth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = bugsSouth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Bugs/" + bugsSouth[i][0] + ".png' alt='" + bugsSouth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- OLD BUGS -------------------- */
+
+            /* -------------------- OLD CREATURES -------------------- */
+            for (var i = 1; i < creaturesSouth.length; i++) {
+                if (creaturesSouth[i][4] == currentMonth) {
+                    var newRow = tableOldCreatures.insertRow();
+                    var cell1 = newRow.insertCell(0);
+                    var cell2 = newRow.insertCell(1);
+                    var cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = creaturesSouth[i][0];
+                    cell1.className = "cellLeft";
+                    cell2.innerHTML = creaturesSouth[i][1];
+                    cell2.className = "cellCenter";
+                    cell3.innerHTML = "<img src='images/Creatures/" + creaturesSouth[i][0] + ".png' alt='" + creaturesSouth[i][0] + "'/>";
+                    cell3.className = "cellRight";
+                }
+            }
+            /* -------------------- OLD CREATURES -------------------- */
+
+            /* -------------------- COMPLETE FISH -------------------- */
+            //Checks Date and Time for Fish
+            for (var i = 1; i < fishSouth.length; i++) {
+                //If statement for backwards month range, ex: Oct - Jan
+                if (fishSouth[i][3] > fishSouth[i][4]) {
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (fishSouth[i][5] > fishSouth[i][6]) {
+                        if ((
+                            (fishSouth[i][3] <= currentMonth)||(fishSouth[i][4] >= currentMonth))
+                            &&
+                            ((fishSouth[i][5] >= currentHour)||(fishSouth[i][6] <= currentHour))) {
+                                console.log(fishSouth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishSouth[i][0] + ".png' alt='" + fishSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            }
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                        (   fishSouth[i][3] <= currentMonth)||(fishSouth[i][4] >= currentMonth)) //3   11 - 4
+                            &&
+                            ((fishSouth[i][5] <= currentHour)&&(fishSouth[i][6] >= currentHour))) {
+                                console.log(fishSouth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishNorth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishSouth[i][0] + ".png' alt='" + fishSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                };
+                //Else statement for regular month range, ex: Mar - Nov
+                } else { 
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (fishSouth[i][5] > fishSouth[i][6]) {
+                        if ((
+                            (fishSouth[i][3] <= currentMonth)&&(fishSouth[i][4] >= currentMonth))
+                            &&
+                            ((fishSouth[i][5] <= currentHour)||(fishSouth[i][6] >= currentHour))){  
+                                console.log(fishSouth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishSouth[i][0] + ".png' alt='" + fishSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                            (fishSouth[i][3] <= currentMonth)&&(fishSouth[i][4] >= currentMonth))
+                            &&
+                            ((fishSouth[i][5] <= currentHour)&&(fishSouth[i][6] >= currentHour))) {
+                                console.log(fishSouth[i][0]);
+                                var newRow = tableFish.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = fishSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = fishSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Fish/" + fishSouth[i][0] + ".png' alt='" + fishSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    };
+                };
+            };
+            /* -------------------- COMPLETE FISH -------------------- */
+
+            /* -------------------- COMPLETE BUGS -------------------- */
+            //Checks Date and Time for Bugs
+            for (var i = 1; i < bugsSouth.length; i++) {
+                //If statement for backwards month range, ex: Oct - Jan
+                if (bugsSouth[i][3] > bugsSouth[i][4]) {
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (bugsSouth[i][5] > bugsSouth[i][6]) {
+                        if ((
+                            (bugsSouth[i][3] <= currentMonth)||(bugsSouth[i][4] >= currentMonth))
+                            &&
+                            ((bugsSouth[i][5] >= currentHour)||(bugsSouth[i][6] <= currentHour))) {
+                                console.log(bugsSouth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsSouth[i][0] + ".png' alt='" + bugsSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            }
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                        (   bugsSouth[i][3] <= currentMonth)||(bugsSouth[i][4] >= currentMonth)) //3   11 - 4
+                            &&
+                            ((bugsSouth[i][5] <= currentHour)&&(bugsSouth[i][6] >= currentHour))) {
+                                console.log(bugsSouth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsSouth[i][0] + ".png' alt='" + bugsSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                };
+                //Else statement for regular month range, ex: Mar - Nov
+                } else { 
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (bugsSouth[i][5] > bugsSouth[i][6]) {
+                        if ((
+                            (bugsSouth[i][3] <= currentMonth)&&(bugsSouth[i][4] >= currentMonth))
+                            &&
+                            ((bugsSouth[i][5] <= currentHour)||(bugsSouth[i][6] >= currentHour))){  
+                                console.log(bugsSouth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsSouth[i][0] + ".png' alt='" + bugsSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                            (bugsSouth[i][3] <= currentMonth)&&(bugsSouth[i][4] >= currentMonth))
+                            &&
+                            ((bugsSouth[i][5] <= currentHour)&&(bugsSouth[i][6] >= currentHour))) {
+                                console.log(bugsSouth[i][0]);
+                                var newRow = tableBugs.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = bugsSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = bugsSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Bugs/" + bugsSouth[i][0] + ".png' alt='" + bugsSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    };
+                };
+            };
+            /* -------------------- COMPLETE BUGS -------------------- */
+
+            /* -------------------- COMPLETE CREATURES -------------------- */
+            //Checks Date and Time for Bugs
+            for (var i = 1; i < creaturesSouth.length; i++) {
+                //If statement for backwards month range, ex: Oct - Jan
+                if (creaturesSouth[i][3] >creaturesSouth[i][4]) {
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (creaturesSouth[i][5] >creaturesSouth[i][6]) {
+                        if ((
+                            (creaturesSouth[i][3] <= currentMonth)||(creaturesSouth[i][4] >= currentMonth))
+                            &&
+                            ((creaturesSouth[i][5] >= currentHour)||(creaturesSouth[i][6] <= currentHour))) {
+                                console.log(creaturesSouth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesSouth[i][0] + ".png' alt='" + creaturesSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            }
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                        (   creaturesSouth[i][3] <= currentMonth)||(creaturesSouth[i][4] >= currentMonth)) //3   11 - 4
+                            &&
+                            ((creaturesNorth[i][5] <= currentHour)&&(creaturesSouth[i][6] >= currentHour))) {
+                                console.log(creaturesSouth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesSouth[i][0] + ".png' alt='" + creaturesSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                };
+                //Else statement for regular month range, ex: Mar - Nov
+                } else { 
+                    //If statement for backwards Time Range
+                    //Example: 23:00 - 08:00
+                    if (creaturesSouth[i][5] > creaturesSouth[i][6]) {
+                        if ((
+                            (creaturesSouth[i][3] <= currentMonth)&&(creaturesSouth[i][4] >= currentMonth))
+                            &&
+                            ((creaturesSouth[i][5] <= currentHour)||(creaturesSouth[i][6] >= currentHour))){  
+                                console.log(creaturesSouth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesSouth[i][0] + ".png' alt='" + creaturesSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    //Else statement for regular Time Range
+                    //Example: 12:00 - 20:00
+                    } else {
+                        if ((
+                            (creaturesSouth[i][3] <= currentMonth)&&(creaturesSouth[i][4] >= currentMonth))
+                            &&
+                            ((creaturesSouth[i][5] <= currentHour)&&(creaturesSouth[i][6] >= currentHour))) {
+                                console.log(creaturesSouth[i][0]);
+                                var newRow = tableCreatures.insertRow();
+                                var cell1 = newRow.insertCell(0);
+                                var cell2 = newRow.insertCell(1);
+                                var cell3 = newRow.insertCell(2);
+                                cell1.innerHTML = creaturesSouth[i][0];
+                                cell1.className = "cellLeft";
+                                cell2.innerHTML = creaturesSouth[i][1];
+                                cell2.className = "cellCenter";
+                                cell3.innerHTML = "<img src='images/Creatures/" + creaturesSouth[i][0] + ".png' alt='" + creaturesSouth[i][0] + "'/>";
+                                cell3.className = "cellRight";
+                            };
+                    };
+                };
+            };
+            /* -------------------- COMPLETE CREATURES -------------------- */
+    }
+        /* -------------------- SOUTHERN HEMISPHERE -------------------- */
+
+
     </script>
 
     <!-- Bootstrap Scripts -->    
