@@ -1,5 +1,9 @@
-# AC-fish-bugs
-Version 2 of the "AC-Checklist" repo.
+## AC-fish-bugs
+### A simpler version of the repo "AC-Checklist"
+
+This version only lists the available animals and where to catch them.
+
+---
 
 A website to help with catching the various Fish, Bugs, and Sea Creatures in Animal Crossing: New Horizons.
 
@@ -12,3 +16,6 @@ Looks up the current date/time and returns the follow lists:
   - Fish unavailable next month
   - Bugs unavailable next month
   - Sea Creatures unavailable next month
+
+
+---
